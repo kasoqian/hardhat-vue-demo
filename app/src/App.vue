@@ -28,33 +28,33 @@ const provider = new ethers.providers.Web3Provider(
     ethereum,
 );
 
-const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
-const contractABI = require("../../artifacts/contracts/Counter.sol/Counter").abi
+// const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+// const contractABI = require("../../artifacts/contracts/Counter.sol/Counter").abi
 
-// Goerli 测试网 
-// const contractAddress = "0xdd8B45a7d1897437941B02182f85be0420cf84B5"
-// const contractABI = [
-//     {
-//         "inputs": [],
-//         "name": "addcounter",
-//         "outputs": [],
-//         "stateMutability": "nonpayable",
-//         "type": "function"
-//     },
-//     {
-//         "inputs": [],
-//         "name": "getcounter",
-//         "outputs": [
-//             {
-//                 "internalType": "uint256",
-//                 "name": "",
-//                 "type": "uint256"
-//             }
-//         ],
-//         "stateMutability": "view",
-//         "type": "function"
-//     }
-// ]
+// Goerli 测试网
+const contractAddress = "0xdd8B45a7d1897437941B02182f85be0420cf84B5"
+const contractABI = [
+    {
+        "inputs": [],
+        "name": "addcounter",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getcounter",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
 
 export default {
     name: 'App',
@@ -84,7 +84,8 @@ export default {
         },
         async addCount() {
             const ContractCounter = this.getCntract()
-            await ContractCounter.addcounter()
+            const tx = await ContractCounter.addcounter()
+            await tx.wait()
             await this.getCount()
         },
         async getCount() {

@@ -4,7 +4,7 @@ Hi, guys! 🙌 Here is a demo project base on `Hardhat` and `vue`, That's helpfu
 
 # previews
 ***notice***
-- checkout your node to `Goerli`.
+- checkout your node to `Goerli`.(请切换链至Goerli，并确保有测试代币)
 - make sure you have enough test ETH for Gas.
 - if number have no change, take a minute or check your transaction.
 
